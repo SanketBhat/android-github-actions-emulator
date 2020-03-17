@@ -1,4 +1,4 @@
-FROM SanketBhat/docker-android-emulator:v1.0.1
+FROM sanketbhat/docker-android-emulator:v1.0.1
 
 ###################
 # GitHub Action description
