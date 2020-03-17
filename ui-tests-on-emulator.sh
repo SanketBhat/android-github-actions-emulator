@@ -2,6 +2,7 @@
 
 set -eu
 
+ENV ANDROID_SDK_ROOT=/root/.android/ 
 # start android emulator
 START=`date +%s` > /dev/null
 
