@@ -5,7 +5,7 @@ set -eu
 # start android emulator
 START=`date +%s` > /dev/null
 
-echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n test android-21 --abi default/armeabi-v7a
+echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n test "system-images;android-21;google_apis;armeabi-v7a"
 $ANDROID_HOME/tools/bin/avdmanager list avd
 $ANDROID_HOME/tools/emulator64-arm -avd test -no-window -no-boot-anim -no-audio -verbose &
 wait-for-emulator
