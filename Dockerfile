@@ -1,7 +1,7 @@
 FROM sanketbhat7/docker-for-android:latest
 
-ENV HOME=~/
-RUN ls ~/
+ENV HOME=~
+RUN ls ~
 
 COPY ui-tests-on-emulator.sh /usr/bin/ui-tests-on-emulator
 COPY run-ui-tests.sh /usr/bin/run-ui-tests
