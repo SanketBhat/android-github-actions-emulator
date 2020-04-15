@@ -5,8 +5,6 @@ set -eu
 # start android emulator
 START=`date +%s` > /dev/null
 
-apt-get install tree
-tree /
 echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force -n test -k "system-images;android-21;google_apis;armeabi-v7a"
 $ANDROID_HOME/tools/bin/avdmanager list avd
 $ANDROID_HOME/tools/emulator -avd test -no-window -no-boot-anim -no-audio -verbose &
