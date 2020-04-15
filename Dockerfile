@@ -20,10 +20,9 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} "tools"\
 
 RUN yes | sdkmanager --licenses
 
-ENV PATH=/sdk:/sdk/tools:/sdk/platform-tools:$PATH
+ENV PATH=/sdk:/sdk/tools:/sdk/platform-tools:/sdk/emulator:$PATH
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin
-
 
 COPY ui-tests-on-emulator.sh /usr/bin/ui-tests-on-emulator
 COPY run-ui-tests.sh /usr/bin/run-ui-tests
