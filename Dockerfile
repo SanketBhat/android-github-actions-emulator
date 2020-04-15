@@ -1,39 +1,4 @@
-FROM ubuntu
-
-#################################
-#   Download necessary tools    #
-#################################
-RUN apt-get update
-RUN apt-get install -y tree openjdk-8-jdk wget unzip expect
-
-################################
-#       Android SDK            #
-################################
-RUN wget -O android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip
-RUN unzip -q android-sdk.zip -d /sdk
-RUN rm android-sdk.zip
-ENV PATH=/sdk/tools/bin:$PATH
-ENV ANDROID_HOME=/sdk
-
-RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} "tools"\
-    "emulator" \
-    "platform-tools" \
-    "build-tools;29.0.3" \
-    "platforms;android-29" \
-    "system-images;android-29;google_apis;x86_64" \
-    "extras;android;m2repository" \
-    "extras;google;m2repository" \
-    "extras;google;google_play_services" 
-
-#Accept licenses
-RUN yes | sdkmanager --licenses
-
-#############################
-# Set Environment Variables #
-#############################
-ENV PATH=/sdk:/sdk/tools:/sdk/platform-tools:/sdk/emulator:$PATH
-ENV ANDROID_SDK_ROOT=$ANDROID_HOME
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+FROM sanket7/docker-for-android
 
 COPY ui-tests-on-emulator.sh /usr/bin/ui-tests-on-emulator
 COPY run-ui-tests.sh /usr/bin/run-ui-tests
