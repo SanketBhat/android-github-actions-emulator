@@ -1,7 +1,14 @@
 FROM ubuntu
 
+#################################
+#   Download necessary tools    #
+#################################
 RUN apt-get update
 RUN apt-get install -y tree openjdk-8-jdk wget unzip expect
+
+################################
+#       Android SDK            #
+################################
 RUN wget -O android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip
 RUN unzip -q android-sdk.zip -d /sdk
 RUN rm android-sdk.zip
@@ -18,11 +25,15 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} "tools"\
     "extras;google;m2repository" \
     "extras;google;google_play_services" 
 
+#Accept licenses
 RUN yes | sdkmanager --licenses
 
+#############################
+# Set Environment Variables #
+#############################
 ENV PATH=/sdk:/sdk/tools:/sdk/platform-tools:/sdk/emulator:$PATH
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/bin
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 COPY ui-tests-on-emulator.sh /usr/bin/ui-tests-on-emulator
 COPY run-ui-tests.sh /usr/bin/run-ui-tests
