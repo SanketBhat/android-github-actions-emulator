@@ -1,4 +1,4 @@
-FROM sanket7/docker-for-android:latest
+FROM sanketbhat7/docker-for-android:latest
 
 COPY ui-tests-on-emulator.sh /usr/bin/ui-tests-on-emulator
 COPY run-ui-tests.sh /usr/bin/run-ui-tests
