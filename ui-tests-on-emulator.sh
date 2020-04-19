@@ -18,7 +18,7 @@ echo "Android Emulator started after $DURATION seconds."
 
 # emulator isn't ready yet, wait 1 min more
 # prevents APK installation error
-sleep 60
+sleep 180
 
 run-ui-tests
 
