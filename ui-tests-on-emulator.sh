@@ -6,7 +6,8 @@ set -eu
 START=`date +%s` > /dev/null
 
 echo no | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a"
-
+chmod +x gradlew
+gradlew build
 $ANDROID_HOME/tools/bin/avdmanager list avd
 $ANDROID_HOME/emulator/emulator -avd test -no-window -no-boot-anim -no-audio -verbose &
 wait-for-emulator
