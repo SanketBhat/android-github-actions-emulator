@@ -5,7 +5,7 @@ set -eu
 # start android emulator
 START=`date +%s` > /dev/null
 
-echo no | $ANDROID_HOME/tools/bin/avdmanager create avd -f -c 1028 -n test -k "system-images;android-25;google_apis;armeabi-v7a"
+echo no | $ANDROID_HOME/tools/bin/avdmanager create avd -f -n test -k "system-images;android-25;google_apis;armeabi-v7a"
 chmod +x gradlew
 ./gradlew buildDebug
 $ANDROID_HOME/tools/bin/avdmanager list avd
