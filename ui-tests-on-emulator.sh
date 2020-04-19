@@ -9,7 +9,7 @@ echo no | $ANDROID_HOME/tools/bin/avdmanager create avd -f -n test -k "system-im
 chmod +x gradlew
 ./gradlew buildDebug
 $ANDROID_HOME/tools/bin/avdmanager list avd
-$ANDROID_HOME/emulator/emulator -avd test -no-window -no-boot-anim -no-audio -verbose &
+$ANDROID_HOME/emulator/emulator -avd test -no-window -no-boot-anim -no-audio -partition-size 1024 -verbose &
 wait-for-emulator
 unlock-emulator-screen
 
