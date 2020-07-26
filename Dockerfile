@@ -11,4 +11,4 @@ COPY wait-for-emulator.sh /usr/bin/wait-for-emulator
 COPY unlock-emulator-screen.sh /usr/bin/unlock-emulator-screen
 COPY entrypoint.sh /
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/starter.sh"]
