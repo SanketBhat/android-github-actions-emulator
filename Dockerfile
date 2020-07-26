@@ -12,4 +12,3 @@ COPY unlock-emulator-screen.sh /usr/bin/unlock-emulator-screen
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/start.sh"]
-CMD ["ui-tests-on-emulator"]
