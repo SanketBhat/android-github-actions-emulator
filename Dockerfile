@@ -10,5 +10,6 @@ COPY kill-running-emulators.sh /usr/bin/kill-running-emulators
 COPY wait-for-emulator.sh /usr/bin/wait-for-emulator
 COPY unlock-emulator-screen.sh /usr/bin/unlock-emulator-screen
 COPY entrypoint.sh /
+COPY starter.sh /
 
 ENTRYPOINT ["/starter.sh"]
