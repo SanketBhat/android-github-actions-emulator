@@ -9,6 +9,9 @@ function wait_emulator_to_be_ready() {
     emulator_name=${EMULATOR_NAME_x86}
   fi
 
+  echo "Selected emulator name:"
+  echo $emulator_name
+  adb devices
   adb devices | grep emulator | cut -f1 | while read line; do adb -s $line emu kill; done
   emulator -avd "${emulator_name}" -verbose -no-boot-anim -no-window -gpu off &
   boot_completed=false
