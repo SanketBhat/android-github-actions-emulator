@@ -15,7 +15,7 @@ wait_emulator_to_be_ready
 #wait 600 seconds to emulator become interactive
 sleep 60
 adb devices
-adb logcat -d *:E
-adb bugreport
+adb shell getprop
+adb emu ping
 
 disable_animation
