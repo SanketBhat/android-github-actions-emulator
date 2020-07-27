@@ -2,8 +2,7 @@
 
 function wait_emulator_to_be_ready() {  
   adb devices | grep emulator | cut -f1 | while read line; do adb -s $line emu kill; done
-  emulator -avd "${EMULATOR_NAME_ARM}" -verbose -no-boot-anim -no-window -gpu off &
-  wait-for-device
+  emulator -avd "${EMULATOR_NAME_ARM}" -verbose -no-boot-anim -no-window -gpu off & adb wait-for-device
 }
 
 function disable_animation() {
@@ -14,5 +13,5 @@ function disable_animation() {
 
 wait_emulator_to_be_ready
 #wait 20 seconds to emulator become interactive
-sleep 20
+sleep 60
 disable_animation
