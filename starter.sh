@@ -1,17 +1,8 @@
 #!/bin/bash
 
 function wait_emulator_to_be_ready() {
-  cpu_support_hardware_acceleration=$(grep -cw ".*\(vmx\|svm\).*" /proc/cpuinfo)
-  kvm_support=$(kvm-ok)
-
   emulator_name=${EMULATOR_NAME_ARM}
-  if [ "$cpu_support_hardware_acceleration" != 0 ] && [ "$kvm_support" != *"NOT"* ]; then
-    emulator_name=${EMULATOR_NAME_x86}
-  fi
-
-  echo "Selected emulator name:"
-  echo $emulator_name
-  adb devices
+  
   adb devices | grep emulator | cut -f1 | while read line; do adb -s $line emu kill; done
   emulator -avd "${emulator_name}" -verbose -no-boot-anim -no-window -gpu off &
   boot_completed=false
