@@ -13,4 +13,4 @@ COPY entrypoint.sh /
 COPY starter.sh /
 
 RUN chmod +x starter.sh
-ENTRYPOINT ["./starter.sh"]
+ENTRYPOINT ["/starter.sh"]
