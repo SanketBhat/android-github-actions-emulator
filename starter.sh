@@ -13,7 +13,10 @@ function disable_animation() {
 
 wait_emulator_to_be_ready
 #wait 600 seconds to emulator become interactive
-sleep 600
+sleep 60
 adb devices
+adb reconnect device
+adb logcat -d *:E
+adb bugreport
 
 disable_animation
