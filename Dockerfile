@@ -12,4 +12,5 @@ COPY unlock-emulator-screen.sh /usr/bin/unlock-emulator-screen
 COPY entrypoint.sh /
 COPY starter.sh /
 
-ENTRYPOINT ["/starter.sh"]
+RUN chmod +x starter.sh
+ENTRYPOINT ["./starter.sh"]
